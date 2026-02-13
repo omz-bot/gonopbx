@@ -1,0 +1,89 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Blog - GonoPBX" description="Neuigkeiten, Feature-Updates und Tipps rund um GonoPBX. Erfahre, was sich in der Open-Source Telefonanlage tut.">
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <a href="/" class="nav-logo">
+        <img src="/logo.png" alt="GonoPBX Logo" />
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18" />
+        </svg>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/#screenshots">Screenshots</a></li>
+        <li><a href="/#techstack">Technologie</a></li>
+        <li><a href="/#installation">Installation</a></li>
+        <li><a href="/release-notes">Release Notes</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/kontakt">Kontakt</a></li>
+        <li><a href="https://github.com/ankaios76/gonopbx" class="nav-cta">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Blog List -->
+  <section class="blog-section">
+    <div class="container">
+      <div class="section-header">
+        <h1>Blog</h1>
+        <p>Neuigkeiten und Updates aus der GonoPBX-Entwicklung.</p>
+      </div>
+
+      <div class="blog-grid">
+
+        <!-- Post: v1.6.0 -->
+        <article class="blog-card">
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <span class="blog-card-tag">Feature Update</span>
+              <span>13. Februar 2026</span>
+            </div>
+            <h2><a href="/blog/v1-6-0-outbound-cid-pai">v1.6.0 &ndash; Ausgehende Rufnummer w&auml;hlen &amp; PAI-Header</a></h2>
+            <p class="blog-excerpt">
+              Nebenstellen mit mehreren Rufnummern k&ouml;nnen ab sofort w&auml;hlen, welche DID bei ausgehenden Anrufen als Caller-ID gesendet wird.
+              Zus&auml;tzlich l&auml;sst sich ein P-Asserted-Identity-Header pro Nebenstelle konfigurieren &ndash; ideal f&uuml;r Nummernbl&ouml;cke.
+            </p>
+            <a href="/blog/v1-6-0-outbound-cid-pai" class="blog-read-more">
+              Weiterlesen
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="https://github.com/ankaios76/gonopbx">GitHub</a></li>
+        <li><a href="https://demo.gonopbx.de">Live-Demo</a></li>
+        <li><a href="/impressum">Impressum</a></li>
+        <li><a href="/datenschutz">Datenschutz</a></li>
+      </ul>
+      <p>&copy; 2026 Norbert Hengsteler. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- Mobile nav toggle script -->
+  <script>
+    document.getElementById('navToggle')?.addEventListener('click', () => {
+      document.getElementById('navLinks')?.classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks')?.classList.remove('open');
+      });
+    });
+  </script>
+
+</Layout>

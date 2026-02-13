@@ -1,0 +1,177 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="v1.6.0 – Ausgehende Rufnummer & PAI-Header - GonoPBX Blog" description="GonoPBX v1.6.0: Ausgehende Caller-ID pro Nebenstelle wählen und P-Asserted-Identity Header konfigurieren. Perfekt für Nummernblöcke.">
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <a href="/" class="nav-logo">
+        <img src="/logo.png" alt="GonoPBX Logo" />
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18" />
+        </svg>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/#screenshots">Screenshots</a></li>
+        <li><a href="/#techstack">Technologie</a></li>
+        <li><a href="/#installation">Installation</a></li>
+        <li><a href="/release-notes">Release Notes</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/kontakt">Kontakt</a></li>
+        <li><a href="https://github.com/ankaios76/gonopbx" class="nav-cta">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Blog Article -->
+  <section class="blog-article">
+    <div class="container">
+      <a href="/blog/" class="blog-back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        Zur&uuml;ck zum Blog
+      </a>
+
+      <div class="blog-article-header">
+        <div class="blog-card-meta" style="justify-content:center;">
+          <span class="blog-card-tag">Feature Update</span>
+          <span>13. Februar 2026</span>
+          <span>&middot;</span>
+          <span>v1.6.0</span>
+        </div>
+        <h1>Ausgehende Rufnummer w&auml;hlen &amp; P-Asserted-Identity</h1>
+      </div>
+
+      <div class="blog-article-content">
+
+        <p>
+          Mit GonoPBX v1.6.0 erhalten Nebenstellen mit mehreren zugeordneten Rufnummern deutlich mehr Kontrolle
+          &uuml;ber ausgehende Anrufe. Bisher wurde immer die <strong>erste zugeordnete DID</strong> als Caller-ID
+          verwendet &ndash; ab sofort kann jede Nebenstelle ihre ausgehende Rufnummer selbst w&auml;hlen.
+        </p>
+
+        <h2>Ausgehende Caller-ID w&auml;hlen</h2>
+
+        <p>
+          Das Problem kennen viele: Ein Unternehmen hat einen Nummernblock (z.B. +4922166980 bis +4922166989),
+          und jeder Mitarbeiter bekommt eine eigene Durchwahlnummer. Eingehend funktioniert das perfekt &ndash;
+          aber bei ausgehenden Anrufen wurde bislang immer dieselbe Nummer angezeigt.
+        </p>
+
+        <p>
+          Ab v1.6.0 zeigt die Nebenstellen-Detailseite ein <strong>Dropdown-Men&uuml;</strong> mit allen
+          zugeordneten Rufnummern. Einfach die gew&uuml;nschte Nummer ausw&auml;hlen, speichern &ndash; fertig.
+          Die ausgew&auml;hlte DID wird bei allen ausgehenden Anrufen als Caller-ID gesendet.
+        </p>
+
+        <p>
+          Wird keine Auswahl getroffen, bleibt das bisherige Verhalten erhalten:
+          Die erste zugeordnete Rufnummer wird als Standard verwendet. Bestehende Installationen
+          sind also vollst&auml;ndig r&uuml;ckw&auml;rtskompatibel.
+        </p>
+
+        <h2>P-Asserted-Identity (PAI) Header</h2>
+
+        <p>
+          Viele SIP-Provider erwarten neben der Caller-ID auch einen
+          <strong>P-Asserted-Identity-Header</strong> (PAI), um die Identit&auml;t des Anrufers
+          gegen&uuml;ber dem Provider zu best&auml;tigen. Das ist besonders bei Nummernbl&ouml;cken relevant,
+          wo die Kopfnummer des Blocks als PAI gesendet werden muss.
+        </p>
+
+        <p>
+          In der Nebenstellen-Detailseite gibt es jetzt ein zus&auml;tzliches Textfeld f&uuml;r die PAI-Nummer.
+          Dort tr&auml;gt man z.B. die Kopfnummer <code>+4922166980</code> ein. GonoPBX generiert dann
+          automatisch den SIP-Header:
+        </p>
+
+        <pre><code>P-Asserted-Identity: &lt;sip:+4922166980@sip-server.provider.de&gt;</code></pre>
+
+        <p>
+          Die Domain wird automatisch vom zugeordneten SIP-Trunk &uuml;bernommen &ndash; es muss nichts
+          manuell konfiguriert werden.
+        </p>
+
+        <h2>Automatischer Schutz</h2>
+
+        <p>
+          Damit keine ung&uuml;ltigen Konfigurationen entstehen, pr&uuml;ft GonoPBX:
+        </p>
+
+        <ul>
+          <li>Die ausgew&auml;hlte Caller-ID <strong>muss</strong> eine der Nebenstelle zugeordnete DID sein</li>
+          <li>Wird eine Rufnummer gel&ouml;scht die als ausgehende CID gesetzt war, wird automatisch auf den Standard zur&uuml;ckgesetzt</li>
+          <li>Das PAI-Feld ist optional &ndash; wird es leer gelassen, wird kein PAI-Header gesendet</li>
+        </ul>
+
+        <h2>So funktioniert das Update</h2>
+
+        <h3>Automatisch (empfohlen)</h3>
+        <p>
+          Im GonoPBX-Webinterface unter <strong>Einstellungen &rarr; Server &rarr; Update</strong>
+          auf &bdquo;Update installieren&ldquo; klicken. Das System zieht die neueste Version,
+          baut die Container neu und startet automatisch neu.
+        </p>
+
+        <h3>Manuell</h3>
+        <pre><code>cd /root/asterisk-pbx-gui
+git pull origin main
+docker compose up -d --build</code></pre>
+
+        <div class="blog-info-box">
+          <p>
+            <strong>Hinweis:</strong> Die Datenbank-Migration (neue Spalten <code>outbound_cid</code>
+            und <code>pai</code>) erfolgt automatisch beim Start des Backends &ndash;
+            es sind keine manuellen Schritte n&ouml;tig.
+          </p>
+        </div>
+
+        <h2>Weitere &Auml;nderungen in v1.6.0</h2>
+
+        <ul>
+          <li><strong>Home Assistant Integration</strong> &ndash; API-Key-Authentifizierung, MQTT-Events f&uuml;r Anrufe und Click-to-Call &uuml;ber den Originate-Endpoint</li>
+          <li><strong>Home Assistant Settings</strong> &ndash; MQTT-Broker, API-Key und Verbindungstest direkt in der Web-GUI konfigurieren</li>
+          <li><strong>Website-Redesign</strong> mit aktualisierten Screenshots</li>
+        </ul>
+
+        <p>
+          Die vollst&auml;ndigen Release Notes findest du auf der
+          <a href="/release-notes" style="color:#3182ce;font-weight:600;">Release Notes-Seite</a>
+          oder direkt auf
+          <a href="https://github.com/ankaios76/gonopbx/releases/tag/v1.6.0" style="color:#3182ce;font-weight:600;" target="_blank" rel="noopener">GitHub</a>.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="https://github.com/ankaios76/gonopbx">GitHub</a></li>
+        <li><a href="https://demo.gonopbx.de">Live-Demo</a></li>
+        <li><a href="/impressum">Impressum</a></li>
+        <li><a href="/datenschutz">Datenschutz</a></li>
+      </ul>
+      <p>&copy; 2026 Norbert Hengsteler. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- Mobile nav toggle script -->
+  <script>
+    document.getElementById('navToggle')?.addEventListener('click', () => {
+      document.getElementById('navLinks')?.classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks')?.classList.remove('open');
+      });
+    });
+  </script>
+
+</Layout>

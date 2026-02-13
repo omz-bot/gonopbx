@@ -36,6 +36,36 @@ import Layout from '../layouts/Layout.astro';
         <p>Alle Ver&auml;nderungen und Neuerungen in GonoPBX auf einen Blick.</p>
       </div>
 
+      <!-- v1.6.0 -->
+      <div class="release">
+        <div class="release-header">
+          <div class="release-version">v1.6.0</div>
+          <div class="release-date">13. Februar 2026</div>
+        </div>
+        <div class="release-body">
+          <h3>Neue Features</h3>
+          <ul>
+            <li>
+              <strong>Ausgehende Rufnummer w&auml;hlbar</strong><br/>
+              Nebenstellen mit mehreren zugeordneten Rufnummern k&ouml;nnen jetzt per Dropdown ausw&auml;hlen, welche DID bei ausgehenden Anrufen als Caller-ID gesendet wird. Standard bleibt die erste zugeordnete Nummer (r&uuml;ckw&auml;rtskompatibel).
+            </li>
+            <li>
+              <strong>P-Asserted-Identity (PAI) Header</strong><br/>
+              Optionaler PAI-Header pro Nebenstelle konfigurierbar, z.B. f&uuml;r die Kopfnummer eines Nummernblocks. Die Domain wird automatisch vom Trunk &uuml;bernommen.
+            </li>
+            <li>
+              <strong>Home Assistant Integration</strong><br/>
+              API-Key-Authentifizierung, MQTT-Publisher f&uuml;r Anruf-Events und Click-to-Call &uuml;ber den Originate-Endpoint. MQTT-Broker und API-Key direkt in der Web-GUI konfigurierbar.
+            </li>
+          </ul>
+          <h3>Verbesserungen</h3>
+          <ul>
+            <li>Website-Redesign mit aktualisierten Screenshots</li>
+            <li>Wird eine Route gel&ouml;scht die als ausgehende CID gesetzt war, wird automatisch auf den Standard zur&uuml;ckgesetzt</li>
+          </ul>
+        </div>
+      </div>
+
       <!-- v1.5.3 -->
       <div class="release">
         <div class="release-header">
