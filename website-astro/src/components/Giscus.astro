@@ -1,0 +1,49 @@
+<!-- Giscus Comments via GitHub Discussions -->
+<div class="giscus-wrapper" style="margin-top:48px;padding-top:32px;border-top:1px solid #e2e8f0;">
+  <h2 style="font-size:1.3rem;font-weight:600;margin-bottom:24px;">Kommentare</h2>
+  <div class="giscus"></div>
+</div>
+
+<script>
+  function loadGiscus() {
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark'
+      ? 'dark_dimmed'
+      : 'light';
+
+    const script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.setAttribute('data-repo', 'ankaios76/gonopbx');
+    script.setAttribute('data-repo-id', 'R_kgDORL4UCw');
+    script.setAttribute('data-category', 'General');
+    script.setAttribute('data-category-id', 'DIC_kwDORL4UC84C2I3g');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-strict', '0');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', 'top');
+    script.setAttribute('data-theme', theme);
+    script.setAttribute('data-lang', 'de');
+    script.setAttribute('data-loading', 'lazy');
+    script.crossOrigin = 'anonymous';
+    script.async = true;
+
+    document.querySelector('.giscus')?.appendChild(script);
+  }
+
+  // Update theme when toggled
+  const observer = new MutationObserver(() => {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (iframe) {
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark'
+        ? 'dark_dimmed'
+        : 'light';
+      iframe.contentWindow?.postMessage(
+        { giscus: { setConfig: { theme } } },
+        'https://giscus.app'
+      );
+    }
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  loadGiscus();
+</script>
